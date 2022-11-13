@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  redis:
+    image: redis:4-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - ayushnet
+  ui:
+    image: cms-ui
+    ports:
+      - "3000:3000"
+    networks:
+      - ayushnet
+  backend:
+    image: cms-backend
+    ports:
+      - "8000:8000"
+    networks:
+      - ayushnet
+  mongodb:
+    image: mongo:4
+    ports:
+      - "27071:27071"
+    networks:
+      - ayushnet
+networks:
+  ayushnet:
+    driver: bridge
